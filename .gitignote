@@ -82,3 +82,7 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+# IntellijIdea files
+*.iml
+.idea
+out
