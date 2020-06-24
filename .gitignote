@@ -84,5 +84,5 @@ nb-configuration.xml
 .DS_Store
 # IntellijIdea files
 *.iml
-.idea
+*.idea
 out
