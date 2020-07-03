@@ -37,7 +37,7 @@ gradle-app.setting
 ##############################
 ## IntelliJ
 ##############################
-out/
+**/out/
 .idea/
 .idea_modules/
 *.iml
@@ -83,6 +83,3 @@ nb-configuration.xml
 ##############################
 .DS_Store
 # IntellijIdea files
-*.iml
-.idea
-out
