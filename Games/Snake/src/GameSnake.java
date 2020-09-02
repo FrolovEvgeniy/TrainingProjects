@@ -26,7 +26,6 @@ public class GameSnake {
     final Color POISON_COLOR = Color.red;
     Snake snake;
     Food food;
-    Poison poison;
     JFrame frame;
     Canvas canvasPanel;
     Random random = new Random();
@@ -58,13 +57,11 @@ public class GameSnake {
 
         snake = new Snake(START_SNAKE_X,START_SNAKE_Y, START_SNAKE_SIZE, START_DIRECTION);
         food = new Food();
-        poison = new Poison();
 
         while (!gameOver){
             snake.move();
             if(food.isEaten()){
                 food.next();
-                poison.add();
             }
             canvasPanel.repaint();
             try {
@@ -127,35 +124,6 @@ public class GameSnake {
         void setXY(int x, int y){
             this.x = x;
             this.y = y;
-        }
-    }
-
-    class Poison {
-        ArrayList<Point> poison = new ArrayList<Point>();
-        Color color = POISON_COLOR;
-
-        boolean isPoison(int x, int y){
-            for(Point point : poison) {
-                if((point.getX() == x) && (point.getY() == y)){
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        void add(){
-            int x,y;
-            do{
-                x = random.nextInt(FIELD_WIDTH);
-                y = random.nextInt(FIELD_HEIGHT);
-            }while (isPoison(x,y) || snake.isInsideSnake(x,y));
-            poison.add(new Point(x,y,color));
-        }
-
-        void paint(Graphics g){
-            for(Point point : poison){
-                point.paint(g);
-            }
         }
     }
 
@@ -228,7 +196,7 @@ public class GameSnake {
             super.paint(g);
             snake.paint(g);
             food.paint(g);
-            poison.paint(g);
+
 
             if(gameOver){
                 g.setColor(Color.red);
